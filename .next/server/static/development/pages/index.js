@@ -184,85 +184,117 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Stats; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _utils_useStats__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/useStats */ "./utils/useStats.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _utils_useStats__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/useStats */ "./utils/useStats.js");
 var _jsxFileName = "/Users/ryanjones/code/react/covid19app/components/Stats.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
+
+const StatGrid = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+`;
+const StatBlock = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div`
+  background: #689a7a;
+  font-size: 2rem;
+  text-align: center;
+  border: 1px solid #487a5a;
+  border-radius: 2%;
+`;
 function Stats({
   url
 }) {
   console.log('new url in stats comp', url);
-  const stats = Object(_utils_useStats__WEBPACK_IMPORTED_MODULE_1__["default"])(url);
+  const {
+    stats,
+    loading,
+    error
+  } = Object(_utils_useStats__WEBPACK_IMPORTED_MODULE_2__["default"])(url);
   if (!stats) return __jsx("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 6
+      lineNumber: 20
     },
     __self: this
-  }, "loading worldwide data");
+  }, "loading data");
   console.log(stats);
-  return __jsx("div", {
+  if (error) return __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12
+      lineNumber: 24
     },
     __self: this
-  }, __jsx("div", {
+  }, __jsx("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 24
+    },
+    __self: this
+  }, error));
+  return __jsx(StatGrid, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 27
+    },
+    __self: this
+  }, __jsx(StatBlock, {
     className: "statBlock",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13
+      lineNumber: 28
     },
     __self: this
   }, __jsx("h3", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14
+      lineNumber: 29
     },
     __self: this
   }, "confirmed cases:"), __jsx("span", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15
+      lineNumber: 30
     },
     __self: this
-  }, stats.confirmed.value)), __jsx("div", {
+  }, stats.confirmed.value)), __jsx(StatBlock, {
     className: "statBlock",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 17
+      lineNumber: 32
     },
     __self: this
   }, __jsx("h3", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 18
+      lineNumber: 33
     },
     __self: this
   }, "deaths:"), __jsx("span", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 19
+      lineNumber: 34
     },
     __self: this
-  }, stats.deaths.value)), __jsx("div", {
+  }, stats.deaths.value)), __jsx(StatBlock, {
     className: "statBlock",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21
+      lineNumber: 36
     },
     __self: this
   }, __jsx("h3", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22
+      lineNumber: 37
     },
     __self: this
   }, "recoveries:"), __jsx("span", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23
+      lineNumber: 38
     },
     __self: this
   }, stats.recovered.value)));
@@ -284,29 +316,44 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_Stats__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Stats */ "./components/Stats.js");
 /* harmony import */ var _components_CountrySelector__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/CountrySelector */ "./components/CountrySelector.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_3__);
 var _jsxFileName = "/Users/ryanjones/code/react/covid19app/pages/index.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
+
+const GlobalStyle = styled_components__WEBPACK_IMPORTED_MODULE_3__["createGlobalStyle"]`
+  html {
+    font-family: 'Helvitca Nueu', sans-serif;
+    background: #daafaf;
+  }
+`;
 function IndexPage() {
   return __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 6
+      lineNumber: 14
     },
     __self: this
-  }, __jsx(_components_Stats__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }, __jsx(GlobalStyle, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 15
+    },
+    __self: this
+  }), __jsx(_components_Stats__WEBPACK_IMPORTED_MODULE_1__["default"], {
     url: " https://covid19.mathdro.id/api",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 7
+      lineNumber: 16
     },
     __self: this
   }), __jsx(_components_CountrySelector__WEBPACK_IMPORTED_MODULE_2__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8
+      lineNumber: 17
     },
     __self: this
   }));
@@ -365,20 +412,43 @@ function useStats(url) {
     0: stats,
     1: setStats
   } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])();
+  const {
+    0: loading,
+    1: setLoading
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
+  const {
+    0: error,
+    1: setError
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])();
   console.log('new url in use stats util', url);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
-    console.log('mounting or updating');
+    setLoading(true);
+    setError();
 
     async function fetchData() {
-      const data = await fetch(url).then(response => response.json());
-      console.log('overall data', data);
-      setStats(data);
+      const data = await fetch(url).then(response => {
+        return response.json();
+      }).catch(err => {
+        setError(err);
+        return;
+      });
+      setLoading(false);
+
+      if (data && data.error) {
+        setError(data.error.message);
+      } else {
+        setStats(data);
+      }
     }
 
     ;
     fetchData();
   }, [url]);
-  return stats;
+  return {
+    stats,
+    loading,
+    error
+  };
 }
 
 /***/ }),
@@ -403,6 +473,17 @@ module.exports = __webpack_require__(/*! /Users/ryanjones/code/react/covid19app/
 /***/ (function(module, exports) {
 
 module.exports = require("react");
+
+/***/ }),
+
+/***/ "styled-components":
+/*!************************************!*\
+  !*** external "styled-components" ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("styled-components");
 
 /***/ })
 
